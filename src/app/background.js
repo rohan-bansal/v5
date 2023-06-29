@@ -47,7 +47,7 @@ export default function Background({ children }) {
         className="flex-1 rounded-xl border-4 border-solid border-sky-50 to-slate-950 bg-gradient-to-tr from-slate-800"
       >
         <div
-          className="pointer-events-none overflow-hidden absolute -inset-px opacity-0 transition duration-300 "
+          className="pointer-events-none overflow-hidden absolute inset-0 opacity-0 transition duration-300 "
           style={{
             opacity,
             background: `radial-gradient(1000px circle at ${position.x}px ${position.y}px, rgba(37, 61, 171 ,.07), transparent 40%)`,

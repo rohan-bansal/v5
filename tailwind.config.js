@@ -13,14 +13,19 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        recursive: ["Recursive", "sans-serif"],
-        figtree: ["Figtree", "sans-serif"],
+        belanos: ["Belanosima", "sans-serif"],
+        arvo: ["Arvo", "serif"],
       },
       animation: {
         border: "border 4s ease infinite",
+        stroke: "stroke 4s ease infinite",
       },
       keyframes: {
         border: {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
+        stroke: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
