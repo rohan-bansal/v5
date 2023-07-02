@@ -2,34 +2,35 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import Vivus from "vivus";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
-function getTween(b, e, i) {
-  return b + (i / 99) * (e - b);
-}
 
 export default function Name() {
+
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
     let animation = new Vivus("nameSvg", {
       type: "sync",
-      duration: 2500,
+      duration: 2200,
       pathTimingFunction: Vivus.LINEAR,
     });
     animation.stop().reset().play(1);
 
     setTimeout(() => {
       animation.stop();
-      let i = 0;
-      (function loopIt(i) {
-        setTimeout(function () {
-          if (i <= 99) {
-            document.getElementById("nameSvgPath").style.fillOpacity = i / 100;
-            loopIt(i + 1);
-          } else {
-          }
-        }, 5);
-      })(i);
-    }, 4100);
+      setShow(true);
+      // let i = 0;
+      // (function loopIt(i) {
+      //   setTimeout(function () {
+      //     if (i <= 99) {
+      //       document.getElementById("nameSvgPath").style.fillOpacity = i / 100;
+      //       loopIt(i + 1);
+      //     } else {
+      //     }
+      //   }, 5);
+      // })(i);
+    }, 5500);
   }, []);
 
   return (
@@ -70,9 +71,18 @@ export default function Name() {
             />
           </g>
         </svg>
-        <p className="text-center text-3xl font-arvo font-bold">
-          building and breaking
-        </p>
+        <AnimatePresence>
+          {show && (
+            <motion.p
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease:"anticipate" }}
+              className="text-center text-3xl font-arvo font-bold"
+            >
+              doot doot.
+            </motion.p>) }
+        </AnimatePresence>
+
       </div>
     </div>
   );
